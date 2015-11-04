@@ -43,3 +43,13 @@ long deci(char* num, int cifre)
     ret+= pot(10,x)*nascii(num[cifre-x-1]);
   return ret;
 }
+
+size_t strl(char* str)
+{
+  size_t ret = 0;
+  while('\0' != str[ret])
+    {
+      ret++;
+    }
+  return ret;
+}
