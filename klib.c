@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "klib.h"
 
-int qualcosa(int arg, char* cosa, char* nome)
+int qualcosa(const int arg, char* cosa, const char* nome)
 {
   if(arg<=0)
     {
@@ -20,7 +20,7 @@ int nascii(char n)
     return (int) n+48;
 }
 
-long pot(long x, unsigned int y)
+double pot(double x, unsigned int y)
 {
   if(!y)
     return 1;
@@ -28,7 +28,7 @@ long pot(long x, unsigned int y)
     return x*pot(x,y-1);
 }
 
-size_t strl(char* str)
+size_t strl(const char* str)
 {
   size_t ret= 0;
   while(str[ret]!='\0')
@@ -36,10 +36,34 @@ size_t strl(char* str)
   return ret;
 }
 
-long deci(char* num, size_t cif)
+long unint(const char* num)
 {
-  if(!cif)
-    return 0;
-  else
-    return nascii(num[cif-1])+10*deci(num,cif-1);
+  int x= 0;
+  long ret= 0;
+  while(num[x]!='\0')
+    {
+      if(num[x] > 47 && num[x] < 58)
+	{
+	  ret*= 10;
+	  ret+= nascii(num[x]);
+	}
+      ++x;
+    }
+  return ret;
+}
+
+double deci(const char* num)
+{
+  int x= 0;
+  double ret= unint(num);
+  while(num[x]!='\0')
+    {
+      if(num[x]=='.')
+	{
+	  while((int) ret > pot(10,x))
+	    ret*= .1;
+	}
+      ++x;
+    }
+  return ret;
 }
