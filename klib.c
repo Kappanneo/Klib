@@ -7,14 +7,14 @@ int qualcosa(const int arg, char* cosa, const char* nome)
     {
       fprintf(stderr,"Inserire %s dopo \"%s \"\n",cosa?cosa:"qualcosa",nome);
       return 1;
-    } 
+    }
   else
     return 0;
 }
 
 int nascii(char n)
 {
-  if(n > 47 && n < 58)
+  if(n >= '0' && n <= '9')
     return (int) n-48;
   else
     return (int) n+48;
@@ -42,7 +42,7 @@ long unint(const char* num)
   long ret= 0;
   while(num[x]!='\0')
     {
-      if(num[x] > 47 && num[x] < 58)
+      if(num[x] >= '0' && num[x] <= '9')
 	{
 	  ret*= 10;
 	  ret+= nascii(num[x]);
@@ -52,18 +52,33 @@ long unint(const char* num)
   return ret;
 }
 
-double deci(const char* num)
+long double deci(const char* num)
 {
   int x= 0;
-  double ret= unint(num);
+  long  double ret= unint(num);
   while(num[x]!='\0')
     {
       if(num[x]=='.')
 	{
-	  while((int) ret > pot(10,x))
+	  while(ret > 1)
 	    ret*= .1;
+	  while(ret < pot(10,x-1))
+	    ret*= 10;
 	}
       ++x;
+    }
+  return ret;
+}
+
+long binario(unsigned long num)
+{
+  long ret= 0;
+  int x =0;
+  while(num > 0)
+    {
+      ret+= pot(10,x)*(num%2);
+      ++x;
+      num/= 2;
     }
   return ret;
 }
