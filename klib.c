@@ -17,17 +17,17 @@ double pot(double x, unsigned int y)
     return x*pot(x,--y);
 }
 
-unsigned long fatt(unsigned int x)
+unsigned long fatt(unsigned long x)
 {
-  long ret =1;
-  while(x)
-    ret*= x--;
-  return ret;
+  if(!x)
+    return 1;
+  else
+    return x*fatt(--x);
 }
 
-size_t strl(const char* str)
+unsigned int strl(const char* str)
 {
-  size_t ret= 0;
+  unsigned int ret= 0;
   while(str[ret]!='\0')
     ++ret;
   return ret;
@@ -64,7 +64,7 @@ long double deci(const char* num)
 	  while(ret < pot(10,x-1))
 	    ret*= 10;
 	  if(num[0]=='-')
-	  ret*=.1;
+	    ret*=.1;
 	}
       ++x;
     }
@@ -95,30 +95,26 @@ unsigned int match(const char* str, char n)
   return ret;
 }
 
-void copia(char* uno, char* due)
+void copia(const char* uno, char* due)
 {
-  int x= 0;
-  while(x <= strl(uno))
-    {
+  int x= -1;
+  while(++x <= strl(uno))
       due[x]= uno[x];
-      ++x;
-    }
 }
 
 void scambia(char* uno, char* due)
 {
-  int x= 0;
+  int x= -1;
   char temp;
-  while(x <= strl(uno))
+  while(++x <= strl(uno))
     {
       temp= due[x];
       due[x]= uno[x];
       uno[x]= temp;
-      ++x;
     }
 }
 
-void bolle(long double* num, unsigned int len)
+void ordina(long double* num, unsigned int len)
 {
   long double temp;
   while(--len)
@@ -132,4 +128,14 @@ void bolle(long double* num, unsigned int len)
 	    num[x-1]= temp;
 	  }
     }
+}
+
+unsigned int compare(char* uno, char* due)
+{
+  int match= 0;
+  int x= 0;
+  while(++x <= strl(uno))
+    if(uno[x]==due[x])
+      match++;
+  return match;
 }
