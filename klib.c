@@ -130,6 +130,15 @@ void ordina(long double* num, unsigned int len)
     }
 }
 
+void charbin(long num, char* str, unsigned int len)
+{
+  for(int v= len; v > 0; v--)
+    {
+      str[v]= (char) nascii(num%2);
+      num/=2;
+    }
+}
+
 unsigned int compare(char* uno, char* due)
 {
   int match= 0;

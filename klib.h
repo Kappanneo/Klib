@@ -9,8 +9,12 @@ unsigned int match(const char*, char); // conta quante volte compare il caratter
 void copia(const char*, char*); // copia il primo array sul secondo
 void scambia(char*, char*); // scambia il contenuto di due array
 void ordina(long double*, unsigned int); // ordina l'array di numeri (ordine crescente)
+void charbin(long, char*, unsigned int); //converte un numero a binario in n char
 unsigned int compare(char*, char*); // rende il numero di caratteri comuni alle due stringhe
 
 #define VET(FORMAT) if(argc-1< match(FORMAT,'[')){fprintf(stderr,"Inserire %s dopo \"%s \"\n",FORMAT,argv[0]); return 1;} //controlla se sono stati inseriti gli argomenti tra parentesi quadre
 
 #define ABS(N) N < 0? -N: N
+
+#define prinf printf
+#define brack break
