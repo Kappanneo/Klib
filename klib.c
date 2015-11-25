@@ -132,19 +132,22 @@ void ordina(long double* num, unsigned int len)
 
 void charbin(long num, char* str, unsigned int len)
 {
-  for(int v= len; v > 0; v--)
+  while(len > 0)
     {
-      str[v]= (char) nascii(num%2);
+      str[len--]= (char) nascii(num%2);
       num/=2;
     }
 }
 
-unsigned int compare(char* uno, char* due)
+unsigned int compara(char* uno, char* due)
 {
-  int match= 0;
+  unsigned int match= 0;
   int x= 0;
-  while(++x <= strl(uno))
-    if(uno[x]==due[x])
-      match++;
+  while(x < strl(uno))
+    {
+      if(uno[x]==due[x])
+	match++;
+      ++x;
+    }
   return match;
 }
