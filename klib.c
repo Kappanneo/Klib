@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "klib.h"
 
 unsigned nascii(char n)
@@ -132,9 +131,9 @@ void ordina(long double* num, unsigned int len)
 
 void charbin(long num, char* str, unsigned int len)
 {
-  while(len > 0)
+  while(len-- > 0)
     {
-      str[len--]= (char) nascii(num%2);
+      str[len]= (char) nascii(num%2);
       num/=2;
     }
 }
