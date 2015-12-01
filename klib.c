@@ -89,8 +89,8 @@ unsigned int match(const char* str, char n)
   unsigned int ret= 0;
   int x= strl(str);
   while(x--)
-      if(str[x]==n)
-	++ret;
+    if(str[x]==n)
+      ++ret;
   return ret;
 }
 
@@ -98,7 +98,7 @@ void copia(const char* uno, char* due)
 {
   int x= -1;
   while(++x <= strl(uno))
-      due[x]= uno[x];
+    due[x]= uno[x];
 }
 
 void scambia(char* uno, char* due)
