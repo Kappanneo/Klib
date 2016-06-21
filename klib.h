@@ -1,4 +1,4 @@
-unsigned nascii(char); // numeri decimali dai rispettivi caratteri
+unsigned int nascii(char); // numeri decimali dai rispettivi caratteri
 double pot(double, unsigned int); // pot(x,y)= x^y
 unsigned long fatt(unsigned long); //rende il fattoriale del numero
 unsigned int strl(const char*); // strl("stringa")= lunghazza della stringa

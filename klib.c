@@ -51,23 +51,19 @@ long unint(const char* num)
 
 long double deci(const char* num)
 {
-  int x= 0;
-  long val= unint(num);
-  long double ret= ABS(val);
-  while(num[x]!='\0')
+  int x= -1;
+  _Bool t= 0;
+  long double ret= unint(num);
+  while((int) ret) ret*= .1;
+  while(num[++x]!='\0')
     {
       if(num[x]=='.')
 	{
-	  while(ret > 1)
-	    ret*= .1;
-	  while(ret < pot(10,x-1))
-	    ret*= 10;
-	  if(num[0]=='-')
-	    ret*=.1;
+	  while(num[++x]=='0') ret*= .1;
+	  break;
 	}
-      ++x;
+      if(num[x]>='1' && num[x]<='9') ret*= 10;
     }
-  ret= num[0]=='-'? -ret: ret;
   return ret;
 }
 
