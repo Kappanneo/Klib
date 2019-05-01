@@ -1,8 +1,9 @@
-klib.o
-prova.c
-prova.o
-prova
+/*
 
-Euclideo
-Tabellare
-Ieee
+!.gitignore
+!README.md
+
+!makefile
+
+!.h
+!.c
