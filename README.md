@@ -1,5 +1,5 @@
 # Klib
-A library I'm writing that's included in the following repos:
+A library I'm writing that's used in the following repos:
 Euclideo,
 Tabellare,
 Ieee.
